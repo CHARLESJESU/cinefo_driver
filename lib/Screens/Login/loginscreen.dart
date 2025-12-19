@@ -520,6 +520,11 @@ class _LoginscreenState extends State<Loginscreen> {
           "baseURL": agentbaseurlforproduction
           //  "baseURL": agentbaseurlfordev
           // "baseURL": driverbaseurlforproduction
+          // "baseURL": settingbaseurlforproduction
+          // "baseURL": settingbaseurlfordev
+          // "baseURL": dancebaseurlforproduction
+          // "baseURL": dancebaseurlfordev
+
 
         }),
       );
@@ -565,6 +570,10 @@ class _LoginscreenState extends State<Loginscreen> {
           'VPID': baseurlresult?['vpid']?.toString() ?? '',
           // "BASEURL": driverbaseurlfordev,  // production for driver
           "BASEURL": agentbaseurlforproduction,
+          // "BASEURL": settingbaseurlforproduction,
+          // "BASEURL": settingbaseurlfordev,
+          // "BASEURL": dancebaseurlfordev,
+          // "BASEURL": dancebaseurlforproduction,
           // "BASEURL": agentbaseurlfordev,
           // "BASEURL": driverbaseurlforproduction,
           'VPTEMPLATEID': baseurlresult?['vptemplteID']?.toString() ?? '',
@@ -704,15 +713,23 @@ class _LoginscreenState extends State<Loginscreen> {
             }
 
             // Save login data to SQLite after successful login
-            print('🔄 Saving login data...');
-            await saveLoginData();
+            // Saving login data is now conditional based on user's unitid.
+            // It will only be saved for unitid == 9 (driver) or unitid == 18 (agent).
+            print('🔄 Skipping unconditional saveLoginData(); save will occur only for unitid 9 or 18');
 
             // Check if user is a driver (unitid == 9)
             if (mounted) {
               final int? _unitid = loginresponsebody?['unitid'];
 
               // If unitid == 18 => Agent
-              if (_unitid == 9 || _unitid == 18) {
+              if (_unitid == 9 || _unitid == 18 || _unitid==10 || _unitid==5 ) {
+                // Save login data for drivers/agents only
+                try {
+                  print('🔄 unitid is ${_unitid} — saving login data to SQLite...');
+                  await saveLoginData();
+                } catch (e) {
+                  print('❌ Error while saving login data for unitid ${_unitid}: $e');
+                }
                 // Make additional HTTP request for drivers
                 try {
                   print(
@@ -795,12 +812,7 @@ class _LoginscreenState extends State<Loginscreen> {
                             // const Routescreenfordriver()
                           ),
                         );
-                      } else if (driverResponseBody['responseData'] != null &&
-                          driverResponseBody['responseData'].toString() !=
-                              '{}' && _unitid == 18 &&
-                          driverResponseBody['responseData']
-                              .toString()
-                              .isNotEmpty) {
+                      } else if (_unitid == 18 || _unitid==5 || _unitid==10) {
                         print(
                             '🚗 ResponseData is not empty and unit is 18, navigating to Routescreenforagent');
 
@@ -1015,10 +1027,11 @@ class _LoginscreenState extends State<Loginscreen> {
                       ),
                       SizedBox(height: 12),
                       Text(
-                        // 'Production Login',
-                        // 'Production Login',
-                         'Agent Login',
+
+                        // 'Agent Login',
                         // 'Driver Login',
+                        'Dancer Login',
+                        // 'Setting Login',
                         style: TextStyle(
                           fontSize: screenWidth * 0.055,
                           fontWeight: FontWeight.bold,

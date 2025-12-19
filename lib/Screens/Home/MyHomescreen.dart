@@ -270,8 +270,10 @@ class _MyHomescreenState extends State<MyHomescreen> {
                     ),
                     child: Center(
                       child: CircleAvatar(
-                        backgroundImage: AssetImage(cinefodriver),
+                        // backgroundImage: AssetImage(cinefodriver),
                         // backgroundImage: AssetImage(cinefoagent),
+                        backgroundImage: AssetImage(dance__logo),
+                        // backgroundImage: AssetImage(setting__logo),
 
                         radius: 40,
                         backgroundColor: Colors.white,
@@ -492,7 +494,8 @@ class _MyHomescreenState extends State<MyHomescreen> {
                             const SizedBox(width: 12),
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 20),
-                              child: Column(
+                              child:
+                              Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Text(_managerName ?? '',
@@ -516,90 +519,90 @@ class _MyHomescreenState extends State<MyHomescreen> {
                     SizedBox(height: 20), // Space between containers
                     // Avengers: Endgame container (different design)
                     //container 2
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 30),
-                      child: Container(
-                        height: 120,
-                        decoration: BoxDecoration(
-                          gradient: LinearGradient(
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            colors: [
-                              Color(0xFF4A6FA5),
-                              Color(0xFF2E4B73),
-                            ],
-                          ),
-                          borderRadius: BorderRadius.circular(15),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.black.withOpacity(0.2),
-                              blurRadius: 8,
-                              offset: Offset(0, 4),
-                            ),
-                          ],
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(20),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Expanded(
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    // Use Flexible for the title so it can shrink if needed
-                                    Flexible(
-                                      fit: FlexFit.loose,
-                                      child: Text(
-                                        _registeredMovie ?? '',
-                                        style: TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w600,
-                                          color: Colors.white,
-                                        ),
-                                        maxLines: 1,
-                                        overflow: TextOverflow.ellipsis,
-                                      ),
-                                    ),
-                                    SizedBox(height: 8),
-                                    // Use Flexible and restrict lines for production house to avoid vertical overflow
-                                    Flexible(
-                                      fit: FlexFit.loose,
-                                      child: Text(
-                                        _productionHouse ?? '',
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          color: Colors.white.withOpacity(0.8),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              Container(
-                                width: 60,
-                                height: 60,
-                                decoration: BoxDecoration(
-                                  color: Colors.white.withOpacity(0.15),
-                                  borderRadius: BorderRadius.circular(30),
-                                  border: Border.all(
-                                    color: Colors.white.withOpacity(0.3),
-                                    width: 2,
-                                  ),
-                                ),
-                                child: Icon(
-                                  Icons.play_arrow,
-                                  color: Colors.white,
-                                  size: 35,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                    ),
-                    SizedBox(height: 20), // Space after container 2
+                    // Padding(
+                    //   padding: const EdgeInsets.symmetric(horizontal: 30),
+                    //   child: Container(
+                    //     height: 120,
+                    //     decoration: BoxDecoration(
+                    //       gradient: LinearGradient(
+                    //         begin: Alignment.topLeft,
+                    //         end: Alignment.bottomRight,
+                    //         colors: [
+                    //           Color(0xFF4A6FA5),
+                    //           Color(0xFF2E4B73),
+                    //         ],
+                    //       ),
+                    //       borderRadius: BorderRadius.circular(15),
+                    //       boxShadow: [
+                    //         BoxShadow(
+                    //           color: Colors.black.withOpacity(0.2),
+                    //           blurRadius: 8,
+                    //           offset: Offset(0, 4),
+                    //         ),
+                    //       ],
+                    //     ),
+                    //     child: Padding(
+                    //       padding: const EdgeInsets.all(20),
+                    //       child: Row(
+                    //         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //         children: [
+                    //           Expanded(
+                    //             child: Column(
+                    //               crossAxisAlignment: CrossAxisAlignment.start,
+                    //               mainAxisAlignment: MainAxisAlignment.center,
+                    //               children: [
+                    //                 // Use Flexible for the title so it can shrink if needed
+                    //                 Flexible(
+                    //                   fit: FlexFit.loose,
+                    //                   child: Text(
+                    //                     _registeredMovie ?? '',
+                    //                     style: TextStyle(
+                    //                       fontSize: 18,
+                    //                       fontWeight: FontWeight.w600,
+                    //                       color: Colors.white,
+                    //                     ),
+                    //                     maxLines: 1,
+                    //                     overflow: TextOverflow.ellipsis,
+                    //                   ),
+                    //                 ),
+                    //                 SizedBox(height: 8),
+                    //                 // Use Flexible and restrict lines for production house to avoid vertical overflow
+                    //                 Flexible(
+                    //                   fit: FlexFit.loose,
+                    //                   child: Text(
+                    //                     _productionHouse ?? '',
+                    //                     style: TextStyle(
+                    //                       fontSize: 12,
+                    //                       color: Colors.white.withOpacity(0.8),
+                    //                     ),
+                    //                   ),
+                    //                 ),
+                    //               ],
+                    //             ),
+                    //           ),
+                    //           Container(
+                    //             width: 60,
+                    //             height: 60,
+                    //             decoration: BoxDecoration(
+                    //               color: Colors.white.withOpacity(0.15),
+                    //               borderRadius: BorderRadius.circular(30),
+                    //               border: Border.all(
+                    //                 color: Colors.white.withOpacity(0.3),
+                    //                 width: 2,
+                    //               ),
+                    //             ),
+                    //             child: Icon(
+                    //               Icons.play_arrow,
+                    //               color: Colors.white,
+                    //               size: 35,
+                    //             ),
+                    //           ),
+                    //         ],
+                    //       ),
+                    //      ),
+                    //   ),
+                    // ),
+                    // SizedBox(height: 20), // Space after container 2
                   ],
                 ),
               ),

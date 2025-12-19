@@ -820,8 +820,8 @@ final payload={"vmid": vmid, "statusid": 1};
                     ),
                     child: Center(
                       child: CircleAvatar(
-                        // backgroundImage: AssetImage(cinefodriver),
-                        backgroundImage: AssetImage(cinefoagent),
+                        backgroundImage: AssetImage(cinefodriver),
+                        // backgroundImage: AssetImage(cinefoagent),
                         radius: 40,
                         backgroundColor: Colors.white,
                       ),
@@ -1049,7 +1049,7 @@ final payload={"vmid": vmid, "statusid": 1};
                                           fontSize: 14,
                                           fontWeight: FontWeight.bold,
                                           color: Colors.white)),
-                                  Text("Agent",
+                                  Text("Driver",
                                       style: TextStyle(
                                           fontSize: 12, color: Colors.white70)),
                                   Text(_mobileNumber ?? '',

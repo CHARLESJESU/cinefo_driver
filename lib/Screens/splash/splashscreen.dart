@@ -23,7 +23,9 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     _initializeSplashScreen();
     WidgetsBinding.instance.addPostFrameCallback((_) {
-      UpdateService.forceUpdate();
+      if (!mounted) return;
+      // Optional: you may want to check remote-config or a flag before forcing update.
+      UpdateService.checkAndPerformUpdate(context);
     });
   }
 
@@ -242,9 +244,12 @@ class _SplashScreenState extends State<SplashScreen> {
                       ),
                       child: ClipOval(
                         child: Image.asset(
-                          // 'assets/tenkrow.png',
+
                           // cinefoagent,
-                          cinefodriver,
+                          // dance__logo,
+                          // setting__logo,
+                          // cinefodriver,
+                          cinefo__logo,
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -255,7 +260,9 @@ class _SplashScreenState extends State<SplashScreen> {
                     // App Title
                     Text(
                       // 'Agent App',
-                     'Driver App',
+                      'Dancer App',
+                      // 'Setting App',
+                     // 'Driver App',
                       style: TextStyle(
                         fontSize: 28,
                         fontWeight: FontWeight.bold,

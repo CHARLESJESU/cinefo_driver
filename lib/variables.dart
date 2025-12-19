@@ -103,12 +103,18 @@ String driverbaseurlfordev="drivermember.cinefo.club";
 String driverbaseurlforproduction="driversmember.cinefo.com";
 String agentbaseurlfordev="agentsmember.cinefo.club";
 String agentbaseurlforproduction="agentmembers.cinefo.com";
-String hosteliabaseurl="hostelia.cinefo.club";
+String dancebaseurlfordev="dancermember.cinefo.club";
+String dancebaseurlforproduction="dancermember.cinefo.com";
+String settingbaseurlfordev="settingmember.cinefo.club";
+String settingbaseurlforproduction="settingmember.cinefo.com";
+
 String cinefoagent='assets/cine agent.png';
 String cinefodriver='assets/driver_union_logo.png';
 String cinefoproduction='assets/tenkrow.png';
 String cinefologo='assets/cinefo-logo.png';
-String cinefo__logo='assets/cinefoprimarylogo.png';
+String cinefo__logo='assets/cinefomainlogo.jpeg';
+String dance__logo='assets/Dancers.png';
+String setting__logo='assets/Setting_Union_Logo.png';
 
 // Global RouteObserver used by pages that implement RouteAware to refresh on navigation
 final RouteObserver<ModalRoute<void>> routeObserver =
