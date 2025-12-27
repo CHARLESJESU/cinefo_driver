@@ -4,12 +4,6 @@ import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart' as path;
 import 'variables.dart';
 
-/// Opens the local `production_login.db` and fetches the first row from
-/// `login_data`. It reads the `production_type_id` column and assigns it to
-/// the global `productionTypeId` variable in `variables.dart`.
-///
-/// Usage:
-/// await fetchProductionTypeFromSqlite();
 Future<void> fetchloginDataFromSqlite() async {
   try {
     final dbPath = path.join(await getDatabasesPath(), 'production_login.db');

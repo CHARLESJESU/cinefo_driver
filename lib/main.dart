@@ -8,12 +8,9 @@ import 'variables.dart'; // Import the file where routeObserver is defined
 void main() {
   IntimeSyncService().startSync(); // Start background FIFO sync at app startup
   runApp(
-    // MultiProvider(
-    //   providers: [
-    //     ChangeNotifierProvider(create: (_) => DubbingConfigProvider()),
-    //   ],
+   
     MyApp(),
-    // ),
+
   );
 }
 
