@@ -4,8 +4,6 @@ import 'package:production/Screens/Home/MyHomescreen.dart';
 import 'package:production/Screens/Home/driverhomescreen.dart';
 import 'package:production/Screens/report/DriverReport.dart';
 
-import 'package:production/Screens/report/InchargeReports.dart';
-import 'package:production/variables.dart';
 
 class Routescreenfordriver extends StatefulWidget {
   final int initialIndex;

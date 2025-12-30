@@ -6,7 +6,6 @@ import 'package:http/http.dart' as http;
 import 'package:nfc_manager/nfc_manager.dart';
 import 'package:production/Screens/Route/RouteScreenforincharge.dart';
 import 'package:production/Screens/Route/RouteScreenfordriver.dart';
-import 'package:production/Screens/Route/RouteScreenforAgent.dart';
 import 'package:production/variables.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
@@ -39,7 +38,7 @@ class _LoginscreenState extends State<Loginscreen> {
   }
 
   Future<void> baseurl() async {
-    final result = await _apiService.fetchBaseUrl();
+    final result = await _apiService.fetchBaseUrl(driverbaseurlfordev);
     if (result != null) {
       setState(() {
         // Global variables are already set in the API service
@@ -106,7 +105,7 @@ class _LoginscreenState extends State<Loginscreen> {
           // "BASEURL": settingbaseurlfordev,
           // "BASEURL": dancebaseurlfordev,
           // "BASEURL": dancebaseurlforproduction,
-          "BASEURL": agentbaseurlfordev,
+          "BASEURL": driverbaseurlfordev,
           // "BASEURL": driverbaseurlforproduction,
           'VPTEMPLATEID': baseurlresult?['vptemplteID']?.toString() ?? '',
           'VMETID':
@@ -255,12 +254,13 @@ class _LoginscreenState extends State<Loginscreen> {
               final int? _unitid = loginresponsebody?['unitid'];
 
               // If unitid == 18 => Agent
-              if (_unitid == 9 ||
-                  _unitid == 18 ||
-                  _unitid == 10 ||
-                  _unitid == 5) {
+              if (_unitid == 9 
+      ) {
                 // Save login data for drivers/agents only
                 try {
+
+
+                  
                   print(
                       '🔄 unitid is ${_unitid} — saving login data to SQLite...');
                   await saveLoginData();
@@ -350,21 +350,6 @@ class _LoginscreenState extends State<Loginscreen> {
                                   const RoutescreenforIncharge()
                               // const Routescreenfordriver()
                               ),
-                        );
-                      } else if (_unitid == 18 ||
-                          _unitid == 5 ||
-                          _unitid == 10) {
-                        print(
-                            '🚗 ResponseData is not empty and unit is 18, navigating to Routescreenforagent');
-
-                        // Update driver field to false for incharge
-                        await updateDriverField(false);
-
-                        Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const RoutescreenforAgent()),
                         );
                       } else {
                         print(
@@ -570,8 +555,8 @@ class _LoginscreenState extends State<Loginscreen> {
                       SizedBox(height: 12),
                       Text(
                         // 'Agent Login',
-                        // 'Driver Login',
-                        'Agent Login',
+                        'Driver Login',
+                        // 'Agent Login',
                         // 'Setting Login',
                         style: TextStyle(
                           fontSize: screenWidth * 0.055,

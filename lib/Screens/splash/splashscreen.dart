@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:production/Screens/Route/RouteScreenforAgent.dart';
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart' as path;
 import 'package:production/variables.dart';
@@ -22,11 +21,11 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     _initializeSplashScreen();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      if (!mounted) return;
-      // Optional: you may want to check remote-config or a flag before forcing update.
-      UpdateService.checkAndPerformUpdate(context);
-    });
+    // Removed auto update check - only check when explicitly needed
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   if (!mounted) return;
+    //   UpdateService.checkAndPerformUpdate(context);
+    // });
   }
 
   Future<void> _initializeSplashScreen() async {
@@ -62,7 +61,6 @@ class _SplashScreenState extends State<SplashScreen> {
 // (the portion after you compute isDriver)
 
           final dynamic driverFlag = loginData['driver'];
-          final dynamic agentFlag = loginData['isAgentt'];
 
           bool isDriver = false;
           if (driverFlag is int && driverFlag == 1) {
@@ -79,22 +77,7 @@ class _SplashScreenState extends State<SplashScreen> {
             print('🔍 DEBUG: Driver flag matched as string');
           }
 
-          bool isAgent = false;
-          if (agentFlag is int && agentFlag == 1) {
-            isAgent = true;
-            print('🔍 DEBUG: Agent flag matched as int 1');
-          }
-          if (agentFlag is bool && agentFlag == true) {
-            isAgent = true;
-            print('🔍 DEBUG: Agent flag matched as bool true');
-          }
-          if (agentFlag is String &&
-              (agentFlag == '1' || agentFlag.toLowerCase() == 'true')) {
-            isAgent = true;
-            print('🔍 DEBUG: Agent flag matched as string');
-          }
-
-          print('🔍 DEBUG: Final isDriver=$isDriver, isAgent=$isAgent');
+          print('🔍 DEBUG: Final isDriver=$isDriver');
 
           if (mounted) {
             if (isDriver) {
@@ -103,13 +86,6 @@ class _SplashScreenState extends State<SplashScreen> {
                 context,
                 MaterialPageRoute(
                     builder: (context) => const Routescreenfordriver()),
-              );
-            } else if (isAgent) {
-              print('👔 DEBUG: Navigating to RoutescreenforAgent');
-              Navigator.pushReplacement(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => const RoutescreenforAgent()),
               );
             } else {
               print('👔 DEBUG: Navigating to RoutescreenforIncharge');
@@ -194,7 +170,6 @@ class _SplashScreenState extends State<SplashScreen> {
 
     // Convert driver field from int to bool (database stores as int, variable expects bool)
     final driverValue = loginData['driver'];
-    final agentValue = loginData['isAgentt'];
     if (driverValue is int) {
       driver = driverValue == 1;
     } else if (driverValue is bool) {
@@ -261,7 +236,7 @@ class _SplashScreenState extends State<SplashScreen> {
                     // App Title
                     Text(
                       // 'Agent App',
-                      'Agent App',
+                      'Driver App',
                       // 'Setting App',
                       // 'Driver App',
                       style: TextStyle(

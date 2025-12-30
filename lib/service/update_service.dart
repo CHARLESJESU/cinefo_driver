@@ -4,13 +4,9 @@ import 'package:package_info_plus/package_info_plus.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class UpdateService {
-  // Provided Play Store url; user gave this one.
-  // static const String playStoreUrl =
-  //     'https://play.google.com/store/apps/details?id=com.vlabs.cinefo_agent';
-  // static const String playStoreUrl =
-  //     'https://play.google.com/store/apps/details?id=com.vlabs.cinefo_dancer';
+
   static const String playStoreUrl =
-      'https://play.google.com/store/apps/details?id=com.vlabs.cinefo_agent';
+      'https://play.google.com/store/apps/details?id=com.vlabs.cinefo_driver';
 
   // Prevent repeated checks during same app session (avoid loops).
   static bool _checkedThisSession = false;
